@@ -611,8 +611,10 @@
 	///only the pre unequip can be cancelled
 	#define COMPONENT_ITEM_BLOCK_UNEQUIP (1<<0)
 #define COMSIG_ITEM_EQUIPPED "item_equip"
+#define COMSIG_MOB_ITEM_EQUIPPED "item_equip_mob"
 ///from base of obj/item/dropped(): (mob/user)
 #define COMSIG_ITEM_DROPPED "item_drop"
+#define COMSIG_MOB_ITEM_DROPPED "mob_item_drop"
 ///from base of obj/item/pickup(): (/mob/taker)
 #define COMSIG_ITEM_PICKUP "item_pickup"
 ///from base of mob/living/carbon/attacked_by(): (mob/living/carbon/target, mob/living/user, hit_zone)
