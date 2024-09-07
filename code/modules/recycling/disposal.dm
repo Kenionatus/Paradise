@@ -119,7 +119,7 @@
 
 	// if full enough, switch to ready mode
 	if(disposal.air_contents.return_pressure() >= SEND_PRESSURE)
-		disposal.mode = 2
+		disposal.mode = DISPOSALS_CHARGED
 		disposal.update()
 
 // attack by item places it in to disposal
@@ -517,7 +517,7 @@
 
 	src.updateDialog()
 
-	if(flush && air_contents.return_pressure() >= SEND_PRESSURE)	// flush can happen even without power
+	if(flush && DISPOSALS_CHARGED)	// flush can happen even without power
 		flush()
 
 	if(stat & NOPOWER)			// won't charge if no power
