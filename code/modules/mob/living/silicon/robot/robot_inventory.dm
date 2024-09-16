@@ -21,9 +21,6 @@
 	contents -= O
 	if(module)
 		O.loc = module	//Return item to module so it appears in its contents, so it can be taken out again.
-		for(var/X in O.actions) // Remove assocated actions
-			var/datum/action/A = X
-			A.Remove(src)
 
 	if(module_active == O)
 		module_active = null
@@ -38,6 +35,7 @@
 		inv3.icon_state = "inv3"
 	if(hud_used)
 		hud_used.update_robot_modules_display()
+	O.dropped(src) //dropped is confusingly named and also called for things like putting into storage
 	return 1
 
 /mob/living/silicon/robot/proc/activate_module(obj/item/O)
@@ -60,7 +58,7 @@
 		O.plane = ABOVE_HUD_PLANE
 		O.screen_loc = inv1.screen_loc
 		contents += O
-		set_actions(O)
+		O.equipped(src, SLOT_HUD_CYBORG_EQUIPPED)
 	else if(!module_state_2)
 		O.mouse_opacity = initial(O.mouse_opacity)
 		module_state_2 = O
@@ -68,7 +66,7 @@
 		O.plane = ABOVE_HUD_PLANE
 		O.screen_loc = inv2.screen_loc
 		contents += O
-		set_actions(O)
+		O.equipped(src, SLOT_HUD_CYBORG_EQUIPPED)
 	else if(!module_state_3)
 		O.mouse_opacity = initial(O.mouse_opacity)
 		module_state_3 = O
@@ -76,17 +74,12 @@
 		O.plane = ABOVE_HUD_PLANE
 		O.screen_loc = inv3.screen_loc
 		contents += O
-		set_actions(O)
+		O.equipped(src, SLOT_HUD_CYBORG_EQUIPPED)
 	else
 		to_chat(src, "You need to disable a module first!")
 	observer_screen_update(O, add = TRUE)
 	check_module_damage(FALSE)
 	update_icons()
-
-/mob/living/silicon/robot/proc/set_actions(obj/item/I)
-	for(var/X in I.actions)
-		var/datum/action/A = X
-		A.Grant(src)
 
 /mob/living/silicon/robot/proc/uneq_active()
 	uneq_module(module_active)
