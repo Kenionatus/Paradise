@@ -401,9 +401,6 @@
 	. = ..()
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_BANANIUM_SHIPMENTS))
 		backpack_contents += /obj/item/stack/sheet/mineral/bananium/fifty
-	if(H.gender == FEMALE)
-		mask = /obj/item/clothing/mask/gas/clown_hat/sexy
-		uniform = /obj/item/clothing/under/rank/civilian/clown/sexy
 
 /datum/outfit/job/clown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
