@@ -353,10 +353,6 @@
 	satchel = /obj/item/storage/backpack/satchel_hyd
 	dufflebag = /obj/item/storage/backpack/duffel/hydro
 
-
-
-//Griff //BS12 EDIT
-
 /datum/job/clown
 	title = "Clown"
 	flag = JOB_CLOWN
